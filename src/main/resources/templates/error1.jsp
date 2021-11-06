@@ -1,5 +1,4 @@
-<%@page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page isELIgnored="false" %>
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -10,9 +9,7 @@
 <body>
 <div class="container text-center">
     <h3>Username and password length should be greater than 4</h3>
-    <% "${message}" %>
-    <% ${message} %>
-    <% out.print("test"); %>
+    <p th:text="${message}">
 </div>
 </body>
 </html>
