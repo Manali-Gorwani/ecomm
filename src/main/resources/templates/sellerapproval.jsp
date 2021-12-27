@@ -1,16 +1,18 @@
-<!doctype html>
-<html lang="en" xmlns:th="www.thymeleaf.com">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="ISO-8859-1">
+    <title>Products</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <!-- Required meta tags -->
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="utf-8">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Session Manager Project</title>
 </head>
 <body>
+
+
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -26,29 +28,20 @@
 <!-- Header -->
 <div th:insert="/header :: navbar">  </div>
 
-<div class="container">
-    <div class="row">
-        <h1>Product Add Page</h1>
-    </div>
-</div>
 
+    <table th:object="${seller}" border="1">
+        <tr th:each="s :${seller}">
 
-<div class="container text-center">
-    <div th:if="${msg}" th:text="${msg}"  th:class="${'alert ' + alertClass}"/>
-</div>
-
-
-<form th:action="@{/doproductadd}" method="post">
-    <div class="mb-3">
-        <label for="inputProductname" class="form-label">Product Name</label>
-        <input name="productname" type="text" class="form-control" id="inputProductname">
-    </div>
-    <div class="mb-3">
-        <label for="inputPrice" class="form-label">Price</label>
-        <input name="price" type="number" min="0"  class="form-control" id="inputPrice">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+            <td  th:text="${s.getUsername()}"></td>
+            <td  th:text="${s.getEmailid()}"></td>
+            <td  th:text="${s.getStatus()}"></td>
+            <td>
+                <a th:href="'/updateStatus?seller=' + ${s.getUsername()}">
+                    <input type="button" value="Change the status" onclick="myFunction()"/>
+                </a>
+            </td>
+        </tr>
+    </table>
 
 </body>
 </html>

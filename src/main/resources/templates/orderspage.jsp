@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Session Manager Project</title>
+    <title>Orders</title>
 </head>
 <body>
 <!-- Optional JavaScript; choose one of the two! -->
@@ -22,33 +22,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 -->
 
-
 <!-- Header -->
 <div th:insert="/header :: navbar">  </div>
-
 <div class="container">
     <div class="row">
-        <h1>Product Add Page</h1>
+        <h1>Orders Page</h1>
     </div>
 </div>
-
-
-<div class="container text-center">
-    <div th:if="${msg}" th:text="${msg}"  th:class="${'alert ' + alertClass}"/>
-</div>
-
-
-<form th:action="@{/doproductadd}" method="post">
-    <div class="mb-3">
-        <label for="inputProductname" class="form-label">Product Name</label>
-        <input name="productname" type="text" class="form-control" id="inputProductname">
+<form th:action="@{/checkout}" method="post">
+    <div th:if="${param.error}" class="text-warning">
+        Invalid Details
     </div>
     <div class="mb-3">
-        <label for="inputPrice" class="form-label">Price</label>
-        <input name="price" type="number" min="0"  class="form-control" id="inputPrice">
+        <label for="inputAddress" class="form-label">Enter the delivery address:</label>
+        <input name="address" type="text" class="form-control" id="inputAddress">
     </div>
+
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 
 </body>
 </html>

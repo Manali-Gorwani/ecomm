@@ -26,5 +26,8 @@ public class SessionmanagerApplication implements CommandLineRunner {
 		this.userRepository.save(user);
 		User user1 = new User("manali",this.bCryptPasswordEncoder.encode("manali"),"manali@gmail.com", "ROLE_NORMAL");
 		this.userRepository.save(user1);
+		User user2 = new User("admin",this.bCryptPasswordEncoder.encode("admin"),"admin@gmail.com", "ROLE_ADMIN");
+		this.userRepository.save(user2);
+
 	}
 }

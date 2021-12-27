@@ -1,5 +1,7 @@
 package com.project.sessionmanager.models;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -10,6 +12,8 @@ public class User {
     String password;
     String emailid;
     String role;
+    @ColumnDefault("true")
+    String status="ACTIVE";
 
 
 
@@ -54,5 +58,12 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) { this.status = status; }
+
 
 }
